@@ -18,6 +18,7 @@ main {
 }
 
 .main-header__nav {
+  
   height: 100%;
   display: flex;
   align-items: center;
