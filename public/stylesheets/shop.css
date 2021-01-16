@@ -34,10 +34,11 @@ body {
 
 .card__image {
   text-align: center;
-  width: 100%;
+  width: 50%;
 }
 
 .card__image img {
+  text-align: center;
   width: 100%;
 }
 
