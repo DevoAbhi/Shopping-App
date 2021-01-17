@@ -16,18 +16,3 @@ exports.postAddProducts = (req, res, next) => {
     product.save();
     res.redirect('/');
 }
-
-exports.getProducts = (req, res, next) => {
-
-    const products = Product.fetchProducts(products => {
-      res.render('shop/products-list', {
-        prods: products,
-        pageTitle: 'Shop',
-        path: '/',
-        hasProducts: products.length > 0,
-        activeShop: true,
-        addProductCSS: true
-      });
-    });
-    
-  }
