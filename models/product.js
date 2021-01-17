@@ -28,7 +28,7 @@ module.exports = class Product {
         })
     }
 
-    static fetchProducts() {
+    static fetchProducts(cb) {
         const myPath = path.join(
             rootDir, 
             'products_data', 
@@ -36,9 +36,9 @@ module.exports = class Product {
         );
         fs.readFile(myPath, (err, fileContent) => {
             if(err) {
-                return [];
+                cb([]);
             }
-            return JSON.parse(fileContent);
+            cb(JSON.parse(fileContent));
         }) 
 
         
