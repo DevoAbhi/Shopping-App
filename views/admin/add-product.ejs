@@ -5,9 +5,21 @@
     <%- include('../includes/navbar.ejs') %> 
     <main>
         <form class="product-form form-group" action="/admin/add-product" method="POST">
-            <div >
-                <label for="title" style="text-align: center;" class="form-control" >Title</label>
+            <div style="margin: 10px 0;">
+                <label for="title" style="text-align: center;">Title</label>
                 <input class="form-control" type="text" name="title" id="title">
+            </div>
+            <div style="margin: 10px 0;">
+                <label for="imageURL" style="text-align: center;">Image URL</label>
+                <input class="form-control" type="text" name="imageURL" id="imageURL">
+            </div>
+            <div style="margin: 10px 0;">
+                <label for="price" style="text-align: center;">Price</label>
+                <input class="form-control" type="number" name="price" id="price">
+            </div>
+            <div style="margin: 10px 0;">
+                <label for="desciption" style="text-align: center;">Desciption</label>
+                <textarea name="desciption" id="desciption" class="form-control" rows="5"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary form-control mt-2">Add Product</button>
