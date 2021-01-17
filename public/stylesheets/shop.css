@@ -33,12 +33,10 @@ body {
 }
 
 .card__image {
-  text-align: center;
-  width: 50%;
+  width: 100%;
 }
 
 .card__image img {
-  text-align: center;
   width: 100%;
 }
 
