@@ -2,7 +2,7 @@ const Product = require('../models/product');
 const products = [];
 
 exports.getAddProducts = (req, res, next) => {
-    res.render('add-product', {
+    res.render('admin/add-product', {
       pageTitle: 'Add Product',
       path: '/admin/add-product',
       addProductCSS: true,
@@ -20,7 +20,7 @@ exports.postAddProducts = (req, res, next) => {
 exports.getProducts = (req, res, next) => {
 
     const products = Product.fetchProducts(products => {
-      res.render('shop', {
+      res.render('shop/products-list', {
         prods: products,
         pageTitle: 'Shop',
         path: '/',

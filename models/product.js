@@ -31,7 +31,7 @@ module.exports = class Product {
             fs.writeFile(myPath, JSON.stringify(products), (err) => {
                 console.log(err);
             });
-        })
+        });
     }
 
     static fetchProducts(cb) {
