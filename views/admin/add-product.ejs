@@ -1,4 +1,16 @@
-<%- include('../includes/head.ejs') %> 
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/stylesheets/shop.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title><%= pageTitle %> </title>
+
 </head>
 
 <body>
@@ -15,7 +27,7 @@
             </div>
             <div style="margin: 10px 0;">
                 <label for="price" style="text-align: center;">Price</label>
-                <input class="form-control" type="number" name="price" id="price">
+                <input class="form-control" type="number" name="price" id="price" step="0.01">
             </div>
             <div style="margin: 10px 0;">
                 <label for="description" style="text-align: center;">Desciption</label>
