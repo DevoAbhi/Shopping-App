@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %> 
+    <link rel="stylesheet" href="/stylesheets/shop.css">
+</head>
+
+<body>
+    <%- include('../includes/navbar.ejs') %> 
+
+    <main class="container" style="text-align: center;">
+        <div class="jumbotron">
+            <h1><%= product.title %> </h1>
+            
+        </div>
+        <hr>
+        <div class="img-fluid">
+            <img src="<%= product.imageURL %> " alt="product.title">
+        </div>
+        <h2><%= product.price %> Rs</h2>
+        <h3><%= product.description %> </h3>
+        <form action="/add-to-cart" method="POST">
+            <button class="btn" type="submit">Add to Cart</button>
+        </form>
+    </main>
+
+    
+<%- include('../includes/end.ejs') %> 
