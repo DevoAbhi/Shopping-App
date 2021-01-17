@@ -29,6 +29,7 @@ module.exports = class Product {
     }
 
     save() {
+        this.id = Math.random().toString();
         getMyPathFolderData(products => {
             products.push(this);
             fs.writeFile(myPath, JSON.stringify(products), (err) => {
