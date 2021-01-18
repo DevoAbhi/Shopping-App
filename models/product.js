@@ -44,8 +44,8 @@ module.exports = class Product {
 
     static findById(id, cb) {
         getMyPathFolderData(products => {
-            const product = products.find(p => p.id === id);
-            cb(product);
-        })
-    }
+          const product = products.find(p => p.id === id);
+          cb(product);
+        });
+      }
 }
