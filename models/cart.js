@@ -34,14 +34,12 @@ module.exports = class Cart {
                 cart.products = [...cart.products, updatedProduct];
             }
 
-            cart.totalPrice = cart.totalPrice + productPrice;
+            cart.totalPrice = cart.totalPrice + +productPrice;
             fs.writeFile(myPath, JSON.stringify(cart), (err) => {
                 if(err) {
                     console.log(err);
                 }
             });
-        })
-
-        
+        })   
     }
 }
