@@ -12,7 +12,7 @@ const adminController = require('../controllers/admin');
 // /admin/add-product => GET
 router.get('/add-product', adminController.getAddProducts);
 
-router.get('/edit-product/:productId', adminController.getEditProducts);
+router.get('/edit-product/:productId', adminController.getEditProduct);
 
 // /admin/products => GET
 router.get('/products', adminController.getProducts);

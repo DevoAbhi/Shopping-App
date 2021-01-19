@@ -7,7 +7,6 @@
 <body>
     <%- include('../includes/navbar.ejs') %> 
     <main>
-        <h1><%= editing %> </h1>
         <form class="product-form form-group" action="/admin/add-product" method="POST">
             <div style="margin: 10px 0;">
                 <label for="title" style="text-align: center;">Title</label>
@@ -26,7 +25,9 @@
                 <textarea name="description" id="description" class="form-control" rows="5"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary form-control mt-2">Add Product</button>
+            <button type="submit" class="btn btn-primary form-control mt-2">
+                <% if(editing) { %> Update Product <% } else { %> Add Product <% } %>   
+            </button>
         </form>
     </main>
 
