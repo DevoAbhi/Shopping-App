@@ -7,22 +7,43 @@
 <body>
     <%- include('../includes/navbar.ejs') %> 
     <main>
-        <form class="product-form form-group" action="/admin/add-product" method="POST">
+        <form class="product-form form-group" action="/admin/<% if(editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
             <div style="margin: 10px 0;">
                 <label for="title" style="text-align: center;">Title</label>
-                <input class="form-control" type="text" name="title" id="title">
+                <input 
+                class="form-control" 
+                type="text" 
+                name="title" 
+                id="title" 
+                required 
+                value="<% if(editing) { %><%= product.title %> <% } %>">
             </div>
             <div style="margin: 10px 0;">
                 <label for="imageURL" style="text-align: center;">Image URL</label>
-                <input class="form-control" type="text" name="imageURL" id="imageURL">
+                <input 
+                class="form-control" 
+                type="text" 
+                name="imageURL" 
+                id="imageURL" 
+                required
+                value="<% if(editing) { %><%= product.imageURL %> <% } %>"
+                >
             </div>
             <div style="margin: 10px 0;">
                 <label for="price" style="text-align: center;">Price</label>
-                <input class="form-control" type="number" name="price" id="price" step="0.01">
+                <input 
+                class="form-control" 
+                type="number" 
+                name="price" 
+                id="price" 
+                step="0.01" 
+                required
+                value="<% if (editing) { %><%= product.price %><% } %>"
+                >
             </div>
             <div style="margin: 10px 0;">
                 <label for="description" style="text-align: center;">Desciption</label>
-                <textarea name="description" id="description" class="form-control" rows="5"></textarea>
+                <textarea name="description" id="description" class="form-control" rows="5" required><% if(editing) { %><%= product.description %> <% } %></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary form-control mt-2">
