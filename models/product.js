@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const rootDir = require('../helper/path');
+const { json } = require('body-parser');
 
 const myPath = path.join(
     rootDir, 
@@ -46,6 +47,17 @@ module.exports = class Product {
                 console.log(err);
             });
             }  
+        });
+    }
+
+    static deleteById(id) {
+        getMyPathFolderData(products => {
+            updatedProducts = products.filter(prod => prod.id!== id);
+            fs.writeFile(myPath, JSON.stringify(updatedProducts), err => {
+                if(!err) {
+
+                }
+            })
         });
     }
 
