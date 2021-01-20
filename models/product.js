@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const Cart = require('./cart');
 
 const rootDir = require('../helper/path');
 const { json } = require('body-parser');
@@ -52,10 +53,15 @@ module.exports = class Product {
 
     static deleteById(id) {
         getMyPathFolderData(products => {
-            updatedProducts = products.filter(prod => prod.id!== id);
+            const product = products.find(prod => prod.id === id);
+            const productPrice = product.price;
+            const updatedProducts = products.filter(prod => prod.id!== id);
             fs.writeFile(myPath, JSON.stringify(updatedProducts), err => {
                 if(!err) {
-
+                    Cart.deleteProduct(id, productPrice);
+                }
+                else {
+                    console.log(err);
                 }
             })
         });
