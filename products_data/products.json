@@ -1,9 +1,1 @@
-[
-  {
-    "title": "Abhinab's Book   ",
-    "imageURL": "https://thumbs-prod.si-cdn.com/ufPRE9RHUDHqQdOsLvYHhJAxy1k=/fit-in/1600x0/https://public-media.si-cdn.com/filer/91/91/91910c23-cae4-46f8-b7c9-e2b22b8c1710/lostbook.jpg  ",
-    "description": "Good book to start reading!  Please read!",
-    "price": "1000.24",
-    "id": "0.011411786657850476"
-  }
-]
+[{"title":"Abhinab's Book   ","imageURL":"https://thumbs-prod.si-cdn.com/ufPRE9RHUDHqQdOsLvYHhJAxy1k=/fit-in/1600x0/https://public-media.si-cdn.com/filer/91/91/91910c23-cae4-46f8-b7c9-e2b22b8c1710/lostbook.jpg  ","description":"Good book to start reading!  Please read!","price":"1000.24","id":"0.011411786657850476"},{"title":"Abhinab's Plant","imageURL":"https://www.ikea.com/in/en/images/products/fejka-artificial-potted-plant-in-outdoor-monstera__0614197_PE686822_S5.JPG","description":"Nice plant.","price":"300.45","id":"0.7108472814521976"}]
