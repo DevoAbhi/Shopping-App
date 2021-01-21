@@ -5,5 +5,17 @@
 <body>
     <%- include('../includes/navbar.ejs') %> 
 
-    
+    <main>
+        <% if(products.length > 0) { %>
+            <ul>
+                <% products.forEach(cartProductData => { %> 
+                    <li>
+                        <%= cartProductData.productData.title %> (<%= cartProductData.qty %> ) 
+                    </li>
+                <% }) %> 
+            </ul>
+        <% } else { %>
+            <h1 style="text-align: center;">Your Cart is empty!</h1>
+        <% } %> 
+    </main>
 <%- include('../includes/end.ejs') %> 
