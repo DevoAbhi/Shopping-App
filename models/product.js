@@ -1,3 +1,4 @@
+const mongoConnect = require('../helper/database');
 const path = require('path');
 const fs = require('fs');
 const Cart = require('./cart');
@@ -23,33 +24,36 @@ const getMyPathFolderData = cb => {
 
 module.exports = class Product {
 
-    constructor(id, title, imageURL, description, price){
+    constructor( title, imageURL, description, price){
         this.title = title;
         this.imageURL = imageURL;
         this.description = description;
         this.price = price;
-        this.id = id;
     }
 
     save() {
-        getMyPathFolderData(products => {
-            if(this.id) {
-                const existingProductIndex = products.findIndex(prod => prod.id === this.id);
-                const updatedProduct = [...products];
-                updatedProduct[existingProductIndex] = this;
-                fs.writeFile(myPath, JSON.stringify(updatedProduct), (err) => {
-                    console.log(err);
-                });
-            }
-            else {
-                this.id = Math.random().toString();
-                products.push(this);
-                fs.writeFile(myPath, JSON.stringify(products), (err) => {
-                console.log(err);
-            });
-            }  
-        });
+            
     }
+
+    // save() {
+    //     getMyPathFolderData(products => {
+    //         if(this.id) {
+    //             const existingProductIndex = products.findIndex(prod => prod.id === this.id);
+    //             const updatedProduct = [...products];
+    //             updatedProduct[existingProductIndex] = this;
+    //             fs.writeFile(myPath, JSON.stringify(updatedProduct), (err) => {
+    //                 console.log(err);
+    //             });
+    //         }
+    //         else {
+    //             this.id = Math.random().toString();
+    //             products.push(this);
+    //             fs.writeFile(myPath, JSON.stringify(products), (err) => {
+    //             console.log(err);
+    //         });
+    //         }  
+    //     });
+    // }
 
     static deleteById(id) {
         getMyPathFolderData(products => {
