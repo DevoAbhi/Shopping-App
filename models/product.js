@@ -26,14 +26,15 @@ module.exports = class Product {
 
   save() {
     const db = getDb();
-    db.collections("products").
-    insertOne(this)
-    .then(result => {
+    return db
+      .collection("products")
+      .insertOne(this)
+      .then((result) => {
         console.log(result);
-    })
-    .catch(err => {
+      })
+      .catch((err) => {
         console.log(err);
-    });
+      });
   }
 
   // save() {
