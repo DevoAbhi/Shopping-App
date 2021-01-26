@@ -1,5 +1,5 @@
 const path = require('path');
-const mongoConnect = require('./helper/database');
+const mongoConnect = require('./helper/database').mongoConnect;
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,8 +22,7 @@ app.use(shopRoutes);
 
 app.use(Controller404.get404);
 
-mongoConnect((client) => {
-    // console.log(client);
+mongoConnect(() => {
     app.listen(3000, () => {
         console.log("Server has started!");
     });
