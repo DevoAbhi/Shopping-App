@@ -1,4 +1,4 @@
-const getDb = require('../util/database').getDb;
+const getDb = require('../helper/database').getDb;
 
 class Product {
   constructor(title, price, description, imageUrl) {
