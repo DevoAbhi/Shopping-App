@@ -1,10 +1,10 @@
 const path = require('path');
-const mongoConnect = require('./helper/database').mongoConnect;
 
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const Controller404 = require('./controllers/404')
+const errorController = require('./controllers/error');
+const mongoConnect = require('./util/database').mongoConnect;
 
 const app = express();
 
@@ -17,15 +17,21 @@ const shopRoutes = require('./routes/shop');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  // User.findById(1)
+  //   .then(user => {
+  //     req.user = user;
+  //     next();
+  //   })
+  //   .catch(err => console.log(err));
+  next();
+});
+
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
-app.use(Controller404.get404);
+app.use(errorController.get404);
 
 mongoConnect(() => {
-    app.listen(3000, () => {
-        console.log("Server has started!");
-    });
-})
-
-
+  app.listen(3000);
+});
