@@ -1,85 +1,40 @@
-const getDb = require("../helper/database").getDb;
-const path = require("path");
-const fs = require("fs");
-const Cart = require("./cart");
+const getDb = require('../util/database').getDb;
 
-const rootDir = require("../helper/path");
-const { json } = require("body-parser");
-
-const myPath = path.join(rootDir, "products_data", "products.json");
-
-const getMyPathFolderData = (cb) => {
-  fs.readFile(myPath, (err, fileContent) => {
-    if (err) {
-      cb([]);
-    } else cb(JSON.parse(fileContent));
-  });
-};
-
-module.exports = class Product {
-  constructor(title, imageURL, description, price) {
+class Product {
+  constructor(title, price, description, imageUrl) {
     this.title = title;
-    this.imageURL = imageURL;
-    this.description = description;
     this.price = price;
+    this.description = description;
+    this.imageUrl = imageUrl;
   }
 
   save() {
     const db = getDb();
     return db
-      .collection("products")
+      .collection('products')
       .insertOne(this)
-      .then((result) => {
+      .then(result => {
         console.log(result);
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
       });
   }
 
-  // save() {
-  //     getMyPathFolderData(products => {
-  //         if(this.id) {
-  //             const existingProductIndex = products.findIndex(prod => prod.id === this.id);
-  //             const updatedProduct = [...products];
-  //             updatedProduct[existingProductIndex] = this;
-  //             fs.writeFile(myPath, JSON.stringify(updatedProduct), (err) => {
-  //                 console.log(err);
-  //             });
-  //         }
-  //         else {
-  //             this.id = Math.random().toString();
-  //             products.push(this);
-  //             fs.writeFile(myPath, JSON.stringify(products), (err) => {
-  //             console.log(err);
-  //         });
-  //         }
-  //     });
-  // }
-
-  static deleteById(id) {
-    getMyPathFolderData((products) => {
-      const product = products.find((prod) => prod.id === id);
-      const productPrice = product.price;
-      const updatedProducts = products.filter((prod) => prod.id !== id);
-      fs.writeFile(myPath, JSON.stringify(updatedProducts), (err) => {
-        if (!err) {
-          Cart.deleteProduct(id, productPrice);
-        } else {
-          console.log(err);
-        }
+  static fetchAll() {
+    const db = getDb();
+    return db
+      .collection('products')
+      .find()
+      .toArray()
+      .then(products => {
+        console.log(products);
+        return products;
+      })
+      .catch(err => {
+        console.log(err);
       });
-    });
   }
+}
 
-  static fetchProducts(cb) {
-    getMyPathFolderData(cb);
-  }
-
-  static findById(id, cb) {
-    getMyPathFolderData((products) => {
-      const product = products.find((p) => p.id === id);
-      cb(product);
-    });
-  }
-};
+module.exports = Product;
