@@ -3,7 +3,7 @@ const Product = require('../models/product');
 exports.getProducts = (req, res, next) => {
   Product.fetchAll()
     .then(products => {
-      res.render('shop/product-list', {
+      res.render('shop/products-list', {
         prods: products,
         pageTitle: 'All Products',
         path: '/products'
@@ -27,7 +27,7 @@ exports.getProduct = (req, res, next) => {
   //   .catch(err => console.log(err));
   Product.findById(prodId)
     .then(product => {
-      res.render('shop/product-detail', {
+      res.render('shop/product-details', {
         product: product,
         pageTitle: product.title,
         path: '/products'
