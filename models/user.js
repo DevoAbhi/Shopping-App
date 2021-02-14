@@ -3,11 +3,11 @@ const getDb = require('../helper/database').getDb;
 
 class User{
 
-  constructor(username, email, cart, id) {
+  constructor(username, email, cart, userId) {
     this.name = username;
     this.email = email;
     this.cart = cart; //items []
-    this._id = id;
+    this._id = userId;
   }
 
   save(){
