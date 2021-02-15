@@ -40,17 +40,17 @@ class User{
 
   getCart(){
     const db = getDb()
-    productIds = this.cart.items.map(i => {
+    const productIds = this.cart.items.map(i => {
       return i.productId;
     })
-    return db.collection('products').find({_id : {$in : productId}}).toArray()
+    return db.collection('products').find({_id : {$in : productIds}}).toArray()
     .then(products => {
       return products.map(prod => {
         return {
           ...prod,
           quantity : this.cart.items.find(i => {
             return i.productId.toString() === prod._id.toString()
-          })
+          }).quantity
         }
       })
     })
