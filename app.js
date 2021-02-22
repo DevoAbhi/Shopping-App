@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
-  User.findById("60319ea440882d2374927d69")
+  User.findById("6033ceedb9af1b17dceeefa2")
     .then((user) => {
       req.user = user;
       next();
@@ -44,7 +44,7 @@ mongoose.connect(
         name: 'Abhinab Roy',
         email: 'abhinabroy2001@gmail.com',
         cart: {
-          index: []
+          items: []
         }
       })
       user.save();
