@@ -21,7 +21,14 @@ const Product = require("./models/product");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-app.user(session({secret: 'abhinab is awesome', resave: false, saveUninitialized: false}))
+app.use(
+  session(
+    {
+      secret: 'abhinab is awesome', 
+      resave: false, 
+      saveUninitialized: false
+    })
+)
 
 app.use((req, res, next) => {
   User.findById("6033ceedb9af1b17dceeefa2")
