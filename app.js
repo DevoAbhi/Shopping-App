@@ -14,7 +14,7 @@ const MONGODB_URI = "mongodb+srv://Abhinab:LmkMBWg7dUseDowc@cluster.e2ips.mongod
 const app = express();
 const store_session = new MongoDBSession({
   uri: MONGODB_URI,
-  collection: 'session'
+  collection: 'sessions'
 })
 
 app.set("view engine", "ejs");
@@ -64,19 +64,6 @@ mongoose.connect(MONGODB_URI,
   { useUnifiedTopology: true }, { useNewUrlParser: true }
 )
 .then(result => {
-  User.findOne().then(user => {
-    if(!user){
-      const user = new User({
-        name: 'Abhinab Roy',
-        email: 'abhinabroy2001@gmail.com',
-        cart: {
-          items: []
-        }
-      })
-      user.save();
-    }
-  })
-  
   app.listen(3000, () => {
     console.log("Database Connected and Server running!")
   })
