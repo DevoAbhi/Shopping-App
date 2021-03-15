@@ -23,20 +23,22 @@ exports.postLogin = (req, res, next) => {
   const password = req.body.password;
   console.log(email)
   console.log(password)
-  User.findOne({email: email})
+  User.findOne({ email: email })
     .then(user => {
       if(!user){
         console.log("No user found")
         return res.redirect('/login')
       }
       console.log('hello')
-      return bcrypt.compare(password, user.password)
-      .then((err, isMatching) => {
-        if(err){
-          console.log("bsdk idhar dekh le")
-          console.log(err)
-          return res.redirect('/login')
-        }
+      console.log(user.password)
+      bcrypt
+      .compare(password, user.password)
+      .then((isMatching) => {
+        // if(err){
+        //   console.log("bsdk idhar dekh le")
+        //   console.log(err)
+        //   return res.redirect('/login')
+        // }
         if(isMatching){
           req.session.isLoggedIn = true;
           req.session.user = user;
@@ -52,7 +54,13 @@ exports.postLogin = (req, res, next) => {
       console.log("yaha hai problem")
       res.redirect('/login')
       
-      });
+      })
+      .catch(err => {
+        if(err){
+          console.log(err);
+          res.redirect('/login');
+        }
+      })
     })
     .catch(err => console.log(err));
 };
