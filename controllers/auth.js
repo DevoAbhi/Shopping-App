@@ -29,16 +29,10 @@ exports.postLogin = (req, res, next) => {
         console.log("No user found")
         return res.redirect('/login')
       }
-      console.log('hello')
       console.log(user.password)
       bcrypt
       .compare(password, user.password)
       .then((isMatching) => {
-        // if(err){
-        //   console.log("bsdk idhar dekh le")
-        //   console.log(err)
-        //   return res.redirect('/login')
-        // }
         if(isMatching){
           req.session.isLoggedIn = true;
           req.session.user = user;
@@ -46,12 +40,10 @@ exports.postLogin = (req, res, next) => {
           if(err){
             console.log(err);
           }
-          console.log("Reached here")
           res.redirect('/')
         })
           
       }
-      console.log("yaha hai problem")
       res.redirect('/login')
       
       })
